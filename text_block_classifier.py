@@ -30,8 +30,10 @@ def classify(tokens):
 def weigh(row):
     weight = 0
     for token in row:
-        if (token in words.SECTION_TITLES):
-            weight += 1
+        for section in words.SECTION_TITLES:
+            if (token in section):
+                weight += 1
+                break
 
     if (weight == 0):
         return 0
