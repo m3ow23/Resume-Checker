@@ -2,5 +2,6 @@
     "python.analysis.extraPaths": [
         "./text_extraction",
         "./resume_checker/text_extraction"
-    ]
+    ],
+    "python.analysis.typeCheckingMode": "off"
 }

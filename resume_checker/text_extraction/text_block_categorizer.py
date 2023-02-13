@@ -1,7 +1,7 @@
-import words
+from text_extraction import words
 
 def categorize(text_blocks):
-    categories = [None]*words.NUMBER_OF_SECTIONS
+    categories = [None]*len(text_blocks)
     for index, text_block in enumerate(text_blocks):
         category_weights = [0]*words.NUMBER_OF_SECTIONS
         for category_index, category_words in enumerate(words.WORDS):

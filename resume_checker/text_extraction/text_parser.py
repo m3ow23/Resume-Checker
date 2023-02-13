@@ -4,6 +4,6 @@ def parse(file_name):
     tokens = []
     for line in lines:
         if (line.strip() != ''):
-            tokens.append(line.rstrip().split(' '))
+            tokens.append(line.rstrip().lower().split(' '))
     
     return tokens

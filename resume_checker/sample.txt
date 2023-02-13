@@ -1,11 +1,42 @@
+Name: KELSEY STEVENS
 
-education
+Address: City, State, Zip Code
+Phone: 000-000-0000
+E-Mail: email@email.com
 
-test lines of code
-I am another lines
-and another
+PROFESSIONAL SUMMARY
+Knowledgeable educator with many years of experience providing educational guidance and mentorship to all types of students. Shifts teaching methods and instructional materials to meet students needs. Caring and enthusiastic and eager to parlay teaching expertise to a new position.
 
-experience
+WORK HISTORY
+High School Spanish Teacher, 07/2017 to Current
+Company Name,City,State
 
-i have a little experience of the work
-i was able to work at Intel
+Integrated technology into classroom as instructional tool, such as College preparation Smartboard.
+Diversified teaching techniques and learning tools help students with Positive reinforcement differing ability levels and varied learning modalities.
+Used tests, quizzes and other assignments to gauge students learning and Classroom preparation and determine understanding of course materials.
+High School Teacher, 02/2012 to 05/2017
+Company Name,City,State
+
+Talked with students in need of extra attention and made plans to assist with concerns.
+Met and exceeded class-wide achievement and proficiency standards as established by state testing departments.
+Used computers, audio-visual aids, and other equipment to supplement presentations.
+Teaching Assistant, 07/2009 to 01/2012
+Company Name,City,State
+
+Supported instructor with test administration, curriculum development and assignment grading.
+Worked with individual students to provide personalized educational, behavioral and emotional support.
+Completed and filed all necessary paperwork for classroom activities, including meal count sheets and attendance logs.
+SKILLS
+Staff development
+Technology integration
+College preparation]
+SMART Boards
+Positive reinforcement
+Common core standards
+Classroom preparation and maintenance
+Grading assignments
+Lesson implementation
+EDUCATION
+
+Bachelor of Arts : Education
+Company Name,City,State
