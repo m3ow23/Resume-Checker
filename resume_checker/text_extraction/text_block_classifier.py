@@ -1,4 +1,6 @@
-from text_extraction import words
+import re
+
+from text_extraction import library
 
 def classify(tokens):
     # Getting the weight of each row
@@ -24,27 +26,31 @@ def classify(tokens):
     while(end_index < len(row_weights) - 1):
         start_index = row_weights.index(-1, end_index)
         end_index = row_weights.index(-1, start_index + 1)
-        text_block = build_block(tokens[start_index:end_index])
-        text_blocks.append(text_block)
+        text_blocks.append(tokens[start_index:end_index])
+
+    # List of List of String to List of String
+    for index, block in enumerate(text_blocks):
+        text_blocks[index] = " ".join(block)
 
     return text_blocks
 
 def weigh(row):
     weight = 0
-    for token in row:
-        for section in words.SECTION_TITLES:
-            if (token in section):
-                weight += 1
+    for section in library.SECTION_TITLES:
+        for title in section:
+            if (re.search(title, row.lower())):
+                weight += len(title.split(' '))
                 break
 
     if (weight == 0):
         return 0
-    return  weight / len(row) * 100
+
+    return  weight / len(row.split(' ')) * 100
 
 def build_block(rows):
     text_block = []
-    for token in rows:
-        text_block += token
+    for row in rows:
+        text_block += row
 
     return text_block
 
@@ -54,7 +60,7 @@ def reclassify(categories, text_blocks):
             if (index_a == index_b or category_a == -1 or category_b == -1):
                 break
             if (category_a == category_b):
-                text_blocks[index_b] = build_block([text_blocks[index_b], text_blocks[index_a]])
+                text_blocks[index_b] = text_blocks[index_b] + text_blocks[index_a]
                 text_blocks.remove(text_blocks[index_a])
                 category_a = -1
     
