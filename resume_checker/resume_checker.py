@@ -1,3 +1,4 @@
+from gui import window
 from text_extraction import library
 from text_extraction import text_parser
 from text_extraction import text_block_classifier
@@ -11,6 +12,10 @@ if ((library.NUMBER_OF_SECTIONS != len(library.SECTION_TITLES))
         or (library.NUMBER_OF_SECTIONS != len(library.WORDS))):
     print('There are unequal number of elements in library.py!')
     exit()
+
+window.show()
+
+exit()
 
 print('Enter file name: ')
 file = input()

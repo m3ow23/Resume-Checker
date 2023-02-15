@@ -21,6 +21,6 @@ def get_qualifications(education, experience, skills):
                 if (re.match('.*' + word.lower() + '.*', text_block.lower(), re.DOTALL)):
                     weight += 1
                     continue
-        qualifications_percentage.append(weight / len(education + experience + skills) * 100)
+        qualifications_percentage.append([resume[0], weight / len(education + experience + skills) * 100])
 
     return qualifications_percentage
