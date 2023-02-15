@@ -2,7 +2,8 @@ from text_extraction import library
 from text_extraction import text_parser
 from text_extraction import text_block_classifier
 from text_extraction import text_block_categorizer
-from text_extraction import named_entity_classifier
+from database import database_handler
+import searcher
 
 # check if library.py contents are correct
 if ((library.NUMBER_OF_SECTIONS != len(library.SECTION_TITLES))
@@ -14,7 +15,7 @@ if ((library.NUMBER_OF_SECTIONS != len(library.SECTION_TITLES))
 print('Enter file name: ')
 file = input()
 
-tokens = text_parser.parse('resume_checker\\' + str(file))
+tokens = text_parser.parse('resume_checker\\inputs\\' + str(file))
 # console log
 print('>>> TOKENS <<<\n') 
 for row in tokens:
@@ -40,3 +41,7 @@ print()
 
 final_categories = text_block_categorizer.categorize(final_text_blocks)
 print('>>> FINAL CATEGORIES <<<\n' + str(final_categories) + '\n') # console log
+
+database_handler.add(file, final_text_blocks)
+qualification_percentage = searcher.get_qualifications(['bachelor'], ['science'], ['writing'])
+print(qualification_percentage)
