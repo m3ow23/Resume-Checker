@@ -1,11 +1,15 @@
 PERSONAL_INFORMATION_SECTION_TITLES = [
         'contact information', 'personal details', 'personal information', 'personal background']
 EDUCATION_SECTION_TITLES = [
-        'education', 'academic background', 'academic credentials', 'qualifications']
+        'training and certifications', 'licenses and certifications', 'academic background', 'academic credentials', 
+        'professional certifications', 'professional development', 'technical certifications', 'industry certifications', 
+        'relevant certifications', 'qualifications', 'education', 'credentials', 'certifications']
 EXPERIENCE_SECTION_TITLES = [
-        'experience', 'professional', 'work', 'professional experience', 'work experience', 'employment history', 'career history', 'work history']
+        'professional experience', 'work experience', 'employment history', 'career history', 'work history',
+        'summary statement', 'professional summary', 'career summary', 'summary of qualifications', 'executive summary',
+        'experience', 'professional', 'work', 'profile']
 SKILLS_SECTION_TITLES = [
-        'skills', 'technical skills', 'key skills', 'professional skills']
+        'professional skills', 'technical skills', 'key skills', 'skills']
 
 NUMBER_OF_SECTIONS = 4
 

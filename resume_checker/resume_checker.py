@@ -15,19 +15,28 @@ print('Enter file name: ')
 file = input()
 
 tokens = text_parser.parse('resume_checker\\' + str(file))
-print('Tokens:\n' + str(tokens) + '\n') # console log
+# console log
+print('>>> TOKENS <<<\n') 
+for row in tokens:
+    print("[" + str(row) + "]")
+print()
 
-text_blocks = text_block_classifier.classify(tokens)
-print('Initial Text Blocks:\n' + str(text_blocks) + '\n') # console log
+initial_text_blocks = text_block_classifier.classify(tokens)
+# console log
+print('>>> INITIAL TEXT BLOCKS <<<\n')
+for block in initial_text_blocks:
+    print("[" + str(block) + "]")
+print()
 
-categories = text_block_categorizer.categorize(text_blocks)
-print('Initial Categories:\n' + str(categories) + '\n') # console log
+initial_categories = text_block_categorizer.categorize(initial_text_blocks)
+print('>>> INITIAL CATEGORIES <<<\n' + str(initial_categories) + '\n') # console log
 
-text_blocks = text_block_classifier.reclassify(categories, text_blocks)
-print('Final Text Blocks:\n' + str(text_blocks) + '\n') # console log
+final_text_blocks = text_block_classifier.reclassify(initial_categories, initial_text_blocks)
+# console log
+print('>>> FINAL TEXT BLOCKS <<<\n') 
+for block in final_text_blocks:
+    print("[" + str(block) + "]")
+print()
 
-categories = text_block_categorizer.categorize(text_blocks)
-print('Final Categories:\n' + str(categories) + '\n') # console log
-
-named_entities = named_entity_classifier.classify(text_blocks)
-print('Named Entities:\n' + str(named_entities) + '\n') # console log
+final_categories = text_block_categorizer.categorize(final_text_blocks)
+print('>>> FINAL CATEGORIES <<<\n' + str(final_categories) + '\n') # console log

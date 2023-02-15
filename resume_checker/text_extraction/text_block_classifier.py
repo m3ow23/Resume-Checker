@@ -45,23 +45,22 @@ def weigh(row):
     if (weight == 0):
         return 0
 
-    return  weight / len(row.split(' ')) * 100
-
-def build_block(rows):
-    text_block = []
-    for row in rows:
-        text_block += row
-
-    return text_block
+    return  weight / len(row.strip().split(' ')) * 100
 
 def reclassify(categories, text_blocks):
-    for index_a, category_a in enumerate(categories):
-        for index_b, category_b in enumerate(categories):
-            if (index_a == index_b or category_a == -1 or category_b == -1):
-                break
-            if (category_a == category_b):
-                text_blocks[index_b] = text_blocks[index_b] + text_blocks[index_a]
-                text_blocks.remove(text_blocks[index_a])
-                category_a = -1
-    
-    return text_blocks
+    new_text_blocks = []
+    for text_block_category in library.TEXT_BLOCK_CATEGORIES:
+        indexes = []
+        for category_index, category in enumerate(categories):
+            if (text_block_category == category):
+                indexes.append(category_index)
+
+        block = ''
+        for index in indexes:
+            if (block == ''):
+                block = text_blocks[index]
+            else:
+                block += "\n" + text_blocks[index]
+        new_text_blocks.append(block)
+
+    return new_text_blocks
