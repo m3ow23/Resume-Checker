@@ -1,7 +1,7 @@
 import re
 
-from text_extraction import library
-from utils import regex_utils
+from resume_checker.text_extraction import library
+from resume_checker.utils import regex_utils
 
 def categorize(text_blocks):
     categories = [None]*len(text_blocks)

@@ -4,9 +4,9 @@ from tkinter import filedialog
 import os
 import subprocess
 
-from text_extraction import text_extractor
-import searcher
-from database import database_handler
+from resume_checker.text_extraction import text_extractor
+from resume_checker import searcher
+from resume_checker.database import database_handler
 
 # ---------- FUNCTION TO OPEN FILE ---------- #
 def open_file():
@@ -49,7 +49,7 @@ def clear_tree(my_tree):
             os.remove(file_path)
 
     # Clear Output Resumes
-    folder_path = os.getcwd() + '\\resume_checker\\Output Resumes'
+    folder_path = os.getcwd() + '\\Output Resumes'
     for file_name in os.listdir(folder_path):
         file_path = os.path.join(folder_path, file_name)
         if os.path.isfile(file_path):

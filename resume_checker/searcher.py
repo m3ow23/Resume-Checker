@@ -1,7 +1,7 @@
 import re
 
-from database import database_handler
-from utils import regex_utils
+from resume_checker.database import database_handler
+from resume_checker.utils import regex_utils
 
 def get_qualifications(education, experience, skills):
     database = database_handler.read()

@@ -1,7 +1,7 @@
 import re
 
-from text_extraction import library
-from utils import regex_utils
+from resume_checker.text_extraction import library
+from resume_checker.utils import regex_utils
 
 def classify(tokens):
     # Getting the weight of each row

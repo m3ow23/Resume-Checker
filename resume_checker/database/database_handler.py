@@ -2,7 +2,7 @@ import os
 import csv
 import shutil
 
-from text_extraction import library
+from resume_checker.text_extraction import library
 
 def read():
     file = open(os.getcwd() + '\\resume_checker\\database\\database.csv', 'r', newline='', encoding='utf-8')
@@ -60,4 +60,4 @@ def get_resume(id):
             src = index
             break
 
-    return shutil.copy(os.getcwd() + '\\resume_checker\\database\\resumes\\' + str(src), os.getcwd() + '\\resume_checker\\Output Resumes\\' + file_name)
+    return shutil.copy(os.getcwd() + '\\resume_checker\\database\\resumes\\' + str(src), os.getcwd() + '\\Output Resumes\\' + file_name)

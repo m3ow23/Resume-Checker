@@ -1,7 +1,7 @@
-from text_extraction import text_parser
-from text_extraction import text_block_classifier
-from text_extraction import text_block_categorizer
-from database import database_handler
+from resume_checker.text_extraction import text_parser
+from resume_checker.text_extraction import text_block_classifier
+from resume_checker.text_extraction import text_block_categorizer
+from resume_checker.database import database_handler
 
 def extract(file_path):
     tokens = text_parser.parse(file_path)
