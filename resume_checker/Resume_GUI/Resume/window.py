@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter import filedialog
 from PyPDF2 import PdfReader
 import docx2txt
+import os
 
 
 def btn_clicked():
@@ -12,11 +13,12 @@ def btn_clicked():
 def openFile():
     filepath = filedialog.askopenfilename(initialdir="C:\\", filetypes=(("text files", "*.txt"),
                                           ("PDF files", "*.pdf"), ("Word Files", "*.docx")))
+    filename = os.path.basename(filepath)
     lblPath = Label(
         font=("Archivo Black", 15, "bold"),
         bg="#2c3333",
         fg="white",
-        text=filepath
+        text=filename
     )
 
     lblPath.place(
