@@ -1,6 +1,7 @@
 import re
 
 from text_extraction import library
+from utils import regex_utils
 
 def classify(tokens):
     # Getting the weight of each row
@@ -38,7 +39,7 @@ def weigh(row):
     weight = 0
     for section in library.SECTION_TITLES:
         for title in section:
-            if (re.search(title, row.lower())):
+            if (re.search('.*' + regex_utils.add_space_between(title) + '.*', row.lower(), re.DOTALL)):
                 weight += len(title.split(' '))
                 break
 

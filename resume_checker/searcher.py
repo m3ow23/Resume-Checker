@@ -1,14 +1,21 @@
 import re
 
 from database import database_handler
+from utils import regex_utils
 
 def get_qualifications(education, experience, skills):
     database = database_handler.read()
 
+    education = [word.strip().lower() for word in education.split(',')]
+    experience = [word.strip().lower() for word in experience.split(',')]
+    skills = [word.strip().lower() for word in skills.split(',')]
+
+    print(education, experience, skills)
+
     qualifications_percentage = []
     for resume in database:
-        for index, text_block in enumerate(resume[1:]):
-            weight = 0
+        weight = 0
+        for index, text_block in enumerate(resume[2:]):
 
             if(index == 0):
                 category = education
@@ -18,9 +25,18 @@ def get_qualifications(education, experience, skills):
                 category = skills
 
             for word in category:
-                if (re.match('.*' + word.lower() + '.*', text_block.lower(), re.DOTALL)):
+                if (not word):
+                    continue
+                if (re.match('.*' + regex_utils.add_space_between(word) + '.*', text_block.lower(), re.DOTALL)):
                     weight += 1
                     continue
-        qualifications_percentage.append([resume[0], weight / len(education + experience + skills) * 100])
+        
+        total = len([element for element in education + experience + skills if element])
 
+        if (total == 0):
+            qualifications_percentage.append([resume[1], 100])
+        else:
+            qualifications_percentage.append([resume[1], round(weight / total * 100)])
+
+    print(qualifications_percentage)
     return qualifications_percentage

@@ -1,6 +1,7 @@
 import re
 
 from text_extraction import library
+from utils import regex_utils
 
 def categorize(text_blocks):
     categories = [None]*len(text_blocks)
@@ -14,6 +15,6 @@ def categorize(text_blocks):
 def weigh(block, category_words):
     weight = 0
     for word in category_words:
-        if (re.search(word, block.lower())):
+        if (re.search('.*' + regex_utils.add_space_between(word) + '.*', block.lower(), re.DOTALL)):
             weight += len(word.split(' '))
     return weight

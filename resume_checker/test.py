@@ -1,8 +1,13 @@
-from database import database_handler
-import searcher
+# from database import database_handler
+# import searcher
 
-database = database_handler.read()
-print(database)
+# database = database_handler.read()
+# print(database)
 
-qualification_percentage = searcher.get_qualifications(['bachelor'], ['science'], ['instructional'])
-print(qualification_percentage)
+# qualification_percentage = searcher.get_qualifications(['bachelor'], ['science'], ['instructional'])
+# print(qualification_percentage)
+import re
+from utils import regex_utils
+word = 'education'
+
+print(regex_utils.add_space_between(word), re.match('.*' + regex_utils.add_space_between(word) + '.*', 'ed    u ca    tion', re.DOTALL))
