@@ -155,7 +155,7 @@ lblFile = Label(
     font=("Archivo Black",15, "bold"),
     bg="#2c3333",
     fg="white",
-    text="File Path:"
+    text="File Name:"
 )
 
 lblFile.place(
