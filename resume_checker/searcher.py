@@ -13,7 +13,7 @@ def get_qualifications(education, experience, skills):
     print(education, experience, skills)
 
     qualifications_percentage = []
-    for resume in database:
+    for i, resume in enumerate(database):
         weight = 0
         for index, text_block in enumerate(resume[2:]):
 
@@ -34,9 +34,9 @@ def get_qualifications(education, experience, skills):
         total = len([element for element in education + experience + skills if element])
 
         if (total == 0):
-            qualifications_percentage.append([resume[1], 100])
+            qualifications_percentage.append([resume[1], 100, i])
         else:
-            qualifications_percentage.append([resume[1], round(weight / total * 100)])
+            qualifications_percentage.append([resume[1], round(weight / total * 100), i])
 
     print(qualifications_percentage)
     return qualifications_percentage

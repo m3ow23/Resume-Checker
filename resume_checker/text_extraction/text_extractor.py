@@ -8,14 +8,14 @@ def extract(file_path):
     # console log
     print('>>> TOKENS <<<\n') 
     for row in tokens:
-        print("[" + str(row) + "]")
+        print(("[" + str(row) + "]").encode('utf-8'))
     print()
 
     initial_text_blocks = text_block_classifier.classify(tokens)
     # console log
     print('>>> INITIAL TEXT BLOCKS <<<\n')
     for block in initial_text_blocks:
-        print("[" + str(block) + "]")
+        print(("[" + str(block) + "]").encode('utf-8'))
     print()
 
     initial_categories = text_block_categorizer.categorize(initial_text_blocks)
@@ -25,7 +25,7 @@ def extract(file_path):
     # console log
     print('>>> FINAL TEXT BLOCKS <<<\n') 
     for block in final_text_blocks:
-        print("[" + str(block) + "]")
+        print(("[" + str(block) + "]").encode('utf-8'))
     print()
 
     print('Extraction Finished')

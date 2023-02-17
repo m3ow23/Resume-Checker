@@ -32,9 +32,10 @@ def process_file_thread(file_path, lblPath):
 def search(my_tree, education, experience, skills):
     print('Search Button Clicked')
     qualification_percentage = searcher.get_qualifications(education, experience, skills)
+    sorted_qualification_percentage = sorted(qualification_percentage, key=lambda x: x[1], reverse=True)
     my_tree.delete(*my_tree.get_children())
-    for i, resume in enumerate(qualification_percentage):
-        my_tree.insert('', index='end', iid=i + 1, text=i + 1, values=((os.path.basename(resume[0]), str(resume[1]) + '%')))
+    for i, resume in enumerate(sorted_qualification_percentage):
+        my_tree.insert('', index='end', iid=resume[2] + 1, text=resume[2] + 1, values=((os.path.basename(resume[0]), str(resume[1]) + '%')))
 
 def clear_tree(my_tree):
     my_tree.delete(*my_tree.get_children())
@@ -67,11 +68,9 @@ def clear_everything(my_tree, education, experience, skills, language, lblPath):
 
     lblPath.config(text='')
 
-
 def table_item_select(event, my_tree):
-    item = my_tree.selection()
+    item = my_tree.selection()[0]
     if (item):
-        item = item[0]
         file_path = database_handler.get_resume(int(item) - 1)
         print('Opening File: ' + file_path)
         subprocess.Popen(['start', '', file_path], shell = True)
