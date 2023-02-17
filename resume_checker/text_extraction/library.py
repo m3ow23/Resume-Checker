@@ -9,7 +9,7 @@ EXPERIENCE_SECTION_TITLES = [
         'summary statement', 'professional summary', 'career summary', 'summary of qualifications', 'executive summary',
         'experience', 'professional', 'work', 'profile']
 SKILLS_SECTION_TITLES = [
-        'professional skills', 'technical skills', 'key skills', 'skills']
+        'professional skills', 'technical skills', 'key skills', 'skills', 'languages']
 
 NUMBER_OF_SECTIONS = 4
 
@@ -43,7 +43,9 @@ EXPERIENCE_WORDS = EXPERIENCE_SECTION_TITLES + [
         'sales', 'marketing', 'financial analysis', 'supervisory experience', 'management experience', 
         'client interaction', 'conflict resolution', 'presentation skills', 'negotiation skills']
 
-SKILLS_WORDS = SKILLS_SECTION_TITLES + [
+LANGUAGES = ['english', 'spanish', 'french', 'german', 'chinese']
+
+SKILLS_WORDS = SKILLS_SECTION_TITLES + LANGUAGES + [
         'classroom management', 'lesson planning', 'curriculum development', 'assessment and evaluation', 
         'student engagement', 'differentiated instruction', 'collaboration with colleagues', 
         'parent and student communication', 'classroom technology', 'behavioral management', 'special education', 

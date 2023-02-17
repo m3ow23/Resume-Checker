@@ -43,6 +43,14 @@ def weigh(row):
                 weight += len(title.split(' '))
                 break
 
+    # if row is composed of single-space separated letters
+    # and double-space separated words
+    if (re.match('.*[^ ] . [^ ].*', row)):
+        sub_double_space = re.sub('  ', '!@#$%^&*', row)
+        remove_single_space = sub_double_space.replace(' ', '')
+        row = remove_single_space.replace('!@#$%^&*', ' ')
+        row = row.strip()
+
     if (weight == 0):
         return 0
 

@@ -7,7 +7,12 @@
 # qualification_percentage = searcher.get_qualifications(['bachelor'], ['science'], ['instructional'])
 # print(qualification_percentage)
 import re
-from resume_checker.utils import regex_utils
-word = 'education'
+from utils import regex_utils
+row = '             s k i l l s  s e t'
 
-print(regex_utils.add_space_between(word), re.match('.*' + regex_utils.add_space_between(word) + '.*', 'ed    u ca    tion', re.DOTALL))
+if (re.match('.*[^ ] . [^ ].*', row)):
+    sub_double_space = re.sub('  ', '!@#$%^&*', row)
+    remove_single_space = sub_double_space.replace(' ', '')
+    row = remove_single_space.replace('!@#$%^&*', ' ')
+    row = row.strip()
+    print(row)

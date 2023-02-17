@@ -28,7 +28,6 @@ def extract(file_path):
         print("[" + str(block) + "]")
     print()
 
-    final_categories = text_block_categorizer.categorize(final_text_blocks)
-    print('>>> FINAL CATEGORIES <<<\n' + str(final_categories) + '\n') # console log
+    print('Extraction Finished')
 
     database_handler.add(database_handler.get_next_id(), file_path, final_text_blocks)

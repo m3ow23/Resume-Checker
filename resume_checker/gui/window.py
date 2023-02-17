@@ -3,32 +3,30 @@ from tkinter import ttk
 from tkinter import filedialog
 import os
 import subprocess
+import threading
 
 from resume_checker.text_extraction import text_extractor
 from resume_checker import searcher
 from resume_checker.database import database_handler
 
 # ---------- FUNCTION TO OPEN FILE ---------- #
-def open_file():
+def open_file(lblPath):
     print('Open File Button Clicked')
     file_path = filedialog.askopenfilename(initialdir="C:\\", filetype=([("Resume Files", "*.txt *.pdf *.docx")]))
     if (not file_path):
         print('No Input Selected')
         return
     
-    lblPath = Label(
-        font=("Archivo Black", 15, "bold"),
-        bg="#2c3333",
-        fg="white",
-        text=os.path.basename(file_path)
-    )
+    lblPath.config(text='processing file...')    
 
-    lblPath.place(
-        x=350,
-        y=30
-    )
+    thread = threading.Thread(target=process_file_thread, args=(file_path, lblPath))
+    thread.start()
 
+def process_file_thread(file_path, lblPath):
+    # Process the file
     text_extractor.extract(file_path)
+    # Update the label to show the file name
+    lblPath.config(text=os.path.basename(file_path))
 
 def search(my_tree, education, experience, skills):
     print('Search Button Clicked')
@@ -38,8 +36,8 @@ def search(my_tree, education, experience, skills):
         my_tree.insert('', index='end', iid=i + 1, text=i + 1, values=((os.path.basename(resume[0]), str(resume[1]) + '%')))
 
 def clear_tree(my_tree):
-    database_handler.clear()
     my_tree.delete(*my_tree.get_children())
+    database_handler.clear()
 
     # Clear database\resumes
     folder_path = os.getcwd() + '\\resume_checker\\database\\resumes'
@@ -58,10 +56,12 @@ def clear_tree(my_tree):
     print("Database has been cleared")
 
 def table_item_select(event, my_tree):
-    item = my_tree.selection()[0]
-    file_path = database_handler.get_resume(int(item) - 1)
-    print('Opening File: ' + file_path)
-    subprocess.Popen(['start', '', file_path], shell = True)
+    item = my_tree.selection()
+    if (item):
+        item = item[0]
+        file_path = database_handler.get_resume(int(item) - 1)
+        print('Opening File: ' + file_path)
+        subprocess.Popen(['start', '', file_path], shell = True)
 
 def show():
     window = Tk()
@@ -123,7 +123,7 @@ def show():
         image = img0,
         borderwidth = 0,
         highlightthickness = 0,
-        command = open_file,
+        command = lambda: open_file(lblPath),
         relief = "flat")
 
     btnOpen.place(
@@ -137,7 +137,7 @@ def show():
         image = imgSearch,
         borderwidth = 0,
         highlightthickness = 0,
-        command = lambda: search(my_tree, education.get() + ',' + language.get(), experience.get(), skills.get()),
+        command = lambda: search(my_tree, education.get(), experience.get(), skills.get() + ',' + language.get()),
         relief = "flat")
 
     btnSearch.place(
@@ -169,6 +169,18 @@ def show():
 
     lblFile.place(
         x=240,
+        y=30
+    )
+
+    lblPath = Label(
+        font=("Archivo Black", 15, "bold"),
+        bg="#2c3333",
+        fg="white",
+        text=""
+    )
+
+    lblPath.place(
+        x=350,
         y=30
     )
 
