@@ -8,9 +8,9 @@
 # print(qualification_percentage)
 import re
 from utils import regex_utils
-row = '             s k i l l s  s e t'
+row = 'I am a programmer'
 
-if (re.match('.*[^ ] . [^ ].*', row)):
+if (re.match('.*[^ ] . . [^ ].*', row)):
     sub_double_space = re.sub('  ', '!@#$%^&*', row)
     remove_single_space = sub_double_space.replace(' ', '')
     row = remove_single_space.replace('!@#$%^&*', ' ')
