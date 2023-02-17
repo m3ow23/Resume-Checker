@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+import tkinter as tk
 from tkinter import filedialog
 import os
 import subprocess
@@ -53,7 +54,19 @@ def clear_tree(my_tree):
         if os.path.isfile(file_path):
             os.remove(file_path)
 
-    print("Database has been cleared")
+def clear_text_boxes(education, experience, skills, language):
+    education.delete(0, END)
+    experience.delete(0, END)
+    skills.delete(0, END)
+    language.delete(0, END)
+
+def clear_everything(my_tree, education, experience, skills, language, lblPath):
+    print("Text boxes and Database are cleared")
+    clear_text_boxes(education, experience, skills, language)
+    clear_tree(my_tree)
+
+    lblPath.config(text='')
+
 
 def table_item_select(event, my_tree):
     item = my_tree.selection()
@@ -69,7 +82,7 @@ def show():
 
     window.geometry("800x500")
     window.configure(bg = "#2c3333")
-    canvas = Canvas(
+    canvas = tk.Canvas(
         window,
         bg = "#2c3333",
         height = 500,
@@ -151,7 +164,7 @@ def show():
         image = imgClear,
         borderwidth = 0,
         highlightthickness = 0,
-        command = lambda: clear_tree(my_tree),
+        command = lambda: clear_everything(my_tree, education, experience, skills, language, lblPath),
         relief = "flat")
 
     btnClear.place(
