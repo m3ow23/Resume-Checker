@@ -7,7 +7,7 @@ EDUCATION_SECTION_TITLES = [
 EXPERIENCE_SECTION_TITLES = [
     'professional experience', 'work experience', 'employment history', 'career history', 'work history',
     'summary statement', 'professional summary', 'career summary', 'summary of qualifications', 'executive summary',
-    'experience', 'professional', 'work', 'profile']
+    'experience', 'professional', 'work', 'profile', 'summary']
 SKILLS_SECTION_TITLES = [
     'professional skills', 'technical skills', 'key skills', 'skills', 'languages']
 
@@ -32,7 +32,7 @@ PERSONAL_INFORMATION_WORDS = PERSONAL_INFORMATION_SECTION_TITLES + [
         'awards and recognition', 'publications', 'patents']
 
 EDUCATION_WORDS = EDUCATION_SECTION_TITLES + [
-        'associate\'s degree', 'bachelor\'s degree', 'master\'s degree', 'doctorate degree',
+        'associate', 'bachelor', 'master', 'doctorate', 'degree'
         'major', 'minor', 'field of study', 'institution', 'graduation date', 'gpa', 'honors',
         'awards', 'scholarships', 'thesis', 'dissertation', 'project', 'specific courses', 'certification', 'training',
         'internship', 'apprenticeship', 'relevant coursework', 'extracurricular activities', 'study abroad program',
